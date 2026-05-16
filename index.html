@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Règlement LSCITY</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0b0e;
+    --bg2: #111318;
+    --bg3: #181b22;
+    --border: #252830;
+    --accent: #e8c84a;
+    --accent2: #f0a030;
+    --red: #e05050;
+    --green: #50c878;
+    --blue: #5090e0;
+    --text: #c8cdd8;
+    --text-dim: #606575;
+    --text-bright: #eef0f5;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* ─── HEADER ─── */
+  header {
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    height: 60px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .logo {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--accent);
+    text-transform: uppercase;
+  }
+  .logo span { color: var(--text-dim); }
+  header p {
+    margin-left: auto;
+    font-size: 12px;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+  }
+
+  /* ─── LAYOUT ─── */
+  .layout {
+    display: flex;
+    min-height: calc(100vh - 60px);
+  }
+
+  /* ─── SIDEBAR ─── */
+  .sidebar {
+    width: 260px;
+    min-width: 260px;
+    background: var(--bg2);
+    border-right: 1px solid var(--border);
+    padding: 24px 0;
+    position: sticky;
+    top: 60px;
+    height: calc(100vh - 60px);
+    overflow-y: auto;
+  }
+  .sidebar::-webkit-scrollbar { width: 4px; }
+  .sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+  .nav-section-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    padding: 16px 20px 8px;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 20px;
+    cursor: pointer;
+    transition: all 0.15s;
+    border-left: 2px solid transparent;
+    font-size: 13px;
+    color: var(--text);
+  }
+  .nav-item:hover {
+    background: var(--bg3);
+    color: var(--text-bright);
+    border-left-color: var(--border);
+  }
+  .nav-item.active {
+    background: rgba(232,200,74,0.07);
+    color: var(--accent);
+    border-left-color: var(--accent);
+  }
+  .nav-item .icon { font-size: 15px; width: 20px; text-align: center; }
+
+  .nav-sub {
+    padding-left: 16px;
+    border-left: 1px solid var(--border);
+    margin: 2px 20px 4px 36px;
+  }
+  .nav-sub .nav-item {
+    padding: 6px 10px;
+    font-size: 12px;
+    border-left: none;
+    color: var(--text-dim);
+  }
+  .nav-sub .nav-item:hover { color: var(--text-bright); background: none; }
+  .nav-sub .nav-item.active { color: var(--accent); background: none; }
+
+  /* ─── MAIN ─── */
+  main {
+    flex: 1;
+    padding: 40px 48px;
+    max-width: 900px;
+  }
+
+  /* ─── SECTIONS ─── */
+  .section { display: none; }
+  .section.active { display: block; animation: fadeIn 0.2s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ─── PAGE HEADER ─── */
+  .page-header {
+    margin-bottom: 36px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .page-header .badge {
+    display: inline-block;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(232,200,74,0.1);
+    border: 1px solid rgba(232,200,74,0.25);
+    padding: 3px 10px;
+    border-radius: 3px;
+    margin-bottom: 12px;
+  }
+  .page-header h1 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text-bright);
+    letter-spacing: 1px;
+  }
+  .page-header p { color: var(--text-dim); margin-top: 6px; font-size: 13px; }
+
+  /* ─── CARDS ─── */
+  .card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+  .card-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-bright);
+    letter-spacing: 0.5px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+    margin-left: 8px;
+  }
+
+  /* ─── RULES ─── */
+  .rule {
+    display: flex;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(37,40,48,0.6);
+  }
+  .rule:last-child { border-bottom: none; padding-bottom: 0; }
+  .rule-icon { font-size: 16px; margin-top: 1px; flex-shrink: 0; }
+  .rule-text { flex: 1; }
+  .rule-text strong { color: var(--text-bright); }
+  .rule-text .sanction {
+    display: inline-block;
+    margin-top: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--red);
+    background: rgba(224,80,80,0.1);
+    border: 1px solid rgba(224,80,80,0.2);
+    padding: 2px 8px;
+    border-radius: 3px;
+  }
+  .rule-text .sanction.ok {
+    color: var(--green);
+    background: rgba(80,200,120,0.1);
+    border-color: rgba(80,200,120,0.2);
+  }
+
+  /* ─── TAGS ─── */
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 9px;
+    border-radius: 3px;
+    margin: 2px 2px 2px 0;
+    letter-spacing: 0.3px;
+  }
+  .tag.red { background: rgba(224,80,80,0.12); color: var(--red); border: 1px solid rgba(224,80,80,0.2); }
+  .tag.green { background: rgba(80,200,120,0.12); color: var(--green); border: 1px solid rgba(80,200,120,0.2); }
+  .tag.yellow { background: rgba(232,200,74,0.12); color: var(--accent); border: 1px solid rgba(232,200,74,0.2); }
+  .tag.blue { background: rgba(80,144,224,0.12); color: var(--blue); border: 1px solid rgba(80,144,224,0.2); }
+
+  /* ─── ALERT BOX ─── */
+  .alert {
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin: 12px 0;
+    display: flex;
+    gap: 10px;
+    font-size: 13px;
+  }
+  .alert.warn { background: rgba(240,160,48,0.08); border-left: 3px solid var(--accent2); color: #ddb870; }
+  .alert.danger { background: rgba(224,80,80,0.08); border-left: 3px solid var(--red); color: #d47070; }
+  .alert.info { background: rgba(80,144,224,0.08); border-left: 3px solid var(--blue); color: #7aabda; }
+  .alert.success { background: rgba(80,200,120,0.08); border-left: 3px solid var(--green); color: #70c88a; }
+
+  /* ─── TABLE ─── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin: 12px 0;
+  }
+  th {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 11px;
+    color: var(--text-dim);
+    text-align: left;
+    padding: 10px 14px;
+    background: var(--bg3);
+    border-bottom: 1px solid var(--border);
+  }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid rgba(37,40,48,0.5);
+    color: var(--text);
+  }
+  tr:hover td { background: rgba(255,255,255,0.02); }
+  tr:last-child td { border-bottom: none; }
+  td:first-child { color: var(--accent); font-weight: 500; }
+
+  /* ─── DEFCON ─── */
+  .defcon-grid { display: flex; flex-direction: column; gap: 12px; }
+  .defcon-item {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .defcon-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    cursor: pointer;
+    transition: background 0.15s;
+    user-select: none;
+  }
+  .defcon-header:hover { background: rgba(255,255,255,0.03); }
+  .defcon-level {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    width: 42px;
+    text-align: center;
+  }
+  .defcon-info h3 { font-family: 'Rajdhani', sans-serif; font-size: 14px; font-weight: 700; color: var(--text-bright); }
+  .defcon-info p { font-size: 12px; color: var(--text-dim); }
+  .defcon-body { padding: 0 18px 14px; font-size: 13px; display: none; }
+  .defcon-body.open { display: block; }
+  .defcon-body ul { padding-left: 16px; }
+  .defcon-body li { padding: 3px 0; }
+
+  .d1 { color: #ff4444; }
+  .d2 { color: #ff8800; }
+  .d3 { color: #ffcc00; }
+  .d4 { color: #88cc44; }
+  .d5 { color: #44aaff; }
+
+  /* ─── HIERARCHY ─── */
+  .hierarchy { display: flex; flex-direction: column; gap: 8px; }
+  .rank-item {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px 18px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .rank-badge {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: rgba(232,200,74,0.12);
+    color: var(--accent);
+    border: 1px solid rgba(232,200,74,0.2);
+    padding: 4px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    min-width: 120px;
+    text-align: center;
+  }
+  .rank-desc { font-size: 12.5px; color: var(--text); }
+  .rank-desc ul { padding-left: 14px; margin-top: 4px; }
+  .rank-desc li { padding: 1px 0; }
+
+  /* ─── LEXIQUE ─── */
+  .lexique-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .lex-item {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 14px;
+  }
+  .lex-rp { font-weight: 600; color: var(--accent); font-size: 13px; }
+  .lex-hrp { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
+
+  /* ─── NOTION ─── */
+  .notion-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .notion-item {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px;
+  }
+  .notion-title { font-family: 'Rajdhani', sans-serif; font-size: 14px; font-weight: 700; color: var(--text-bright); margin-bottom: 6px; }
+  .notion-def { font-size: 12.5px; color: var(--text); }
+  .notion-example { font-size: 12px; color: var(--text-dim); margin-top: 4px; font-style: italic; }
+
+  /* ─── SCROLLBAR ─── */
+  main::-webkit-scrollbar { width: 4px; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .sidebar { display: none; }
+    main { padding: 24px 20px; }
+    .lexique-grid, .notion-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">LS<span>CITY</span></div>
+  <div style="width:1px;height:24px;background:var(--border);"></div>
+  <span style="font-family:'Rajdhani',sans-serif;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--text-dim);">Règlement Officiel</span>
+  <p>Serveur FiveM RP</p>
+</header>
+
+<div class="layout">
+
+  <!-- ═══ SIDEBAR ═══ -->
+  <nav class="sidebar">
+    <div class="nav-section-title">Règlement HRP</div>
+    <div class="nav-item active" onclick="show('hrp-general')"><span class="icon">📜</span> Règlement Général</div>
+    <div class="nav-item" onclick="show('hrp-regles')"><span class="icon">🔠</span> Règles en Jeu</div>
+    <div class="nav-item" onclick="show('hrp-lexique')"><span class="icon">📚</span> Lexique RP</div>
+    <div class="nav-item" onclick="show('hrp-notions')"><span class="icon">🪬</span> Notions de base RP</div>
+    <div class="nav-item" onclick="show('hrp-ticket')"><span class="icon">🎟️</span> Règlement Ticket</div>
+    <div class="nav-item" onclick="show('hrp-stream')"><span class="icon">📽️</span> Règlement Streameur</div>
+    <div class="nav-item" onclick="show('hrp-discord')"><span class="icon">🗣️</span> Discord</div>
+
+    <div class="nav-section-title">Règlement Global</div>
+    <div class="nav-item" onclick="show('global-animal')"><span class="icon">🐶</span> RP Animalier</div>
+    <div class="nav-item" onclick="show('global-services')"><span class="icon">👮</span> Services Publiques</div>
+    <div class="nav-item" onclick="show('global-zonesafe')"><span class="icon">🦺</span> Zone Safe</div>
+
+    <div class="nav-section-title">Règlement RP Légal</div>
+    <div class="nav-item" onclick="show('legal-lspd')"><span class="icon">🚔</span> LSPD / BCSO</div>
+    <div class="nav-item" onclick="show('legal-defcon')"><span class="icon">🚨</span> DEFCON</div>
+    <div class="nav-item" onclick="show('legal-hierachie')"><span class="icon">⭐</span> Hiérarchie LSPD</div>
+    <div class="nav-item" onclick="show('legal-ems')"><span class="icon">🚑</span> Règlement EMS</div>
+    <div class="nav-item" onclick="show('legal-entreprise')"><span class="icon">🏛️</span> Règlement Entreprise</div>
+  </nav>
+
+  <!-- ═══ MAIN ═══ -->
+  <main>
+
+    <!-- ════════════ HRP GÉNÉRAL ════════════ -->
+    <div id="hrp-general" class="section active">
+      <div class="page-header">
+        <div class="badge">Règlement HRP</div>
+        <h1>📜 Règlement Général</h1>
+        <p>Techniques, sanctions et règles de base du serveur LSCITY</p>
+      </div>
+
+      <div class="alert info">💡 <div>Conseil : utilisez <strong>Medal</strong> pour enregistrer vos 10 dernières minutes de jeu. En cas de litige, un clip vidéo est votre meilleur allié auprès du staff.</div></div>
+
+      <div class="card">
+        <div class="card-title">🔧 Modifications du jeu</div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Tout <strong>mod menu, logiciel de cheat</strong> ou modification donnant un avantage (no recoil, no spread, no ragdoll, hitbox, bullet penetration, etc.) est strictement interdit.<br><span class="sanction">⚠️ Ban définitif</span></div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Toute <strong>aide graphique</strong> (pack GF avec peds lumineux, kill effect lumineux, no bush, no water, no props, etc.) est interdite.<br><span class="sanction">⚠️ Wipe + Ban</span></div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">👤 Pseudo IG</div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Votre pseudo doit être <strong>approprié, respectueux et RP</strong>. Pseudos offensants, racistes ou inappropriés sont interdits.<br><span class="sanction">⚠️ Ban temporaire ou permanent</span></div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🚫 Discrimination</div>
+        <div class="rule"><span class="rule-icon">🚫</span><div class="rule-text">Aucune forme de discrimination ne sera tolérée : <strong>racisme, homophobie, transphobie, propos haineux, zoophilie, pédophilie</strong>, etc.<br><span class="sanction">⚠️ Ban définitif du serveur</span></div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">💬 Insultes HRP & Mensonges</div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Les <strong>insultes, menaces ou harcèlement HRP</strong> ne sont pas tolérés. Ceci reste un jeu — le respect est obligatoire.</div></div>
+        <div class="rule"><span class="rule-icon">⚠️</span><div class="rule-text"><strong>Mentir au staff</strong> est considéré comme un acte de mauvaise foi → punitions renforcées et surveillance accrue.</div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🛒 Avantages boutique</div>
+        <div class="alert warn">⚠️ <div>Acheter dans la boutique <strong>ne donne aucun droit particulier</strong>. Aucun passe-droit. Un achat boutique ne vous protège pas d'un ban.</div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🔫 Modifications d'armes non collées</div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Tout accessoire ajouté sur une arme <strong>non permanente (non boutique)</strong> n'est <strong>pas remboursable</strong> en cas d'échange ou de don.</div></div>
+        <div class="rule"><span class="rule-icon">⚠️</span><div class="rule-text">Les accessoires sur une arme non boutique sont considérés comme <strong>perdus définitivement</strong> en cas de perte de l'arme, saisie LSPD, etc.</div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">💰 Vente & Échange HRP</div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text"><strong>Vente HRP</strong> : interdit de vendre armes ou véhicules contre de l'argent réel (IRL). Le staff ne sera pas responsable des arnaques.</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text"><strong>Échange / vente de compte</strong> : interdit. Si une personne liée à votre compte Rockstar est bannie, vous serez également impacté.</div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🕳️ Bugs & Glitches</div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">L'utilisation de <strong>bugs, glitches ou usebugs</strong> est proscrite. Ex : exploiter une animation pour sortir d'une cellule, spam de touches pour obtenir un avantage.</div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">📢 Publicité</div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Toute publicité IG ou sur Discord (serveurs, projets, promotions…) est <strong>strictement interdite</strong>.</div></div>
+      </div>
+    </div>
+
+    <!-- ════════════ RÈGLES EN JEU ════════════ -->
+    <div id="hrp-regles" class="section">
+      <div class="page-header">
+        <div class="badge">Règlement HRP</div>
+        <h1>🔠 Règles en Jeu</h1>
+        <p>Identité, tenue, comportements RP et véhicules</p>
+      </div>
+
+      <div class="card">
+        <div class="card-title">1️⃣ Identité & Tenue RP</div>
+        <div class="rule"><span class="rule-icon">🧍</span><div class="rule-text"><strong>Nom & Prénom RP :</strong> identité crédible et réaliste (prénom + nom). Pseudos fantaisistes, célébrités ou noms hors contexte interdits.<br><span class="sanction">⚠️ Wipe complet du personnage</span></div></div>
+        <div class="rule"><span class="rule-icon">👕</span><div class="rule-text"><strong>Tenue RP :</strong> cohérente avec votre rôleplay. Interdits : pyjama, peignoir, déguisements hors event, pieds nus. Changer de tenue ou retirer son sac en pleine scène est interdit.<br><span class="sanction">⚠️ Bannissement temporaire</span></div></div>
+        <div class="rule"><span class="rule-icon">🎭</span><div class="rule-text">Porter cagoule ou gilet pare-balles en ville sans justification RP est interdit. Tenues Police/EMS interdites aux civils hors-service.</div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">2️⃣ Types de RP interdits</div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text"><strong>RP Sexe :</strong> strictement interdit, aucune exception.</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text"><strong>RP Viol :</strong> interdit.<br><span class="sanction">⚠️ Ban définitif</span></div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text"><strong>Copbait / Gangbait :</strong> provoquer volontairement police, gang ou organisation sans raison RP est interdit.</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text"><strong>Arnaques :</strong> fausses ventes, manipulations pour soutirer de l'argent ou des biens — interdit.</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Tirer en ville sans raison RP cohérente. Déplacer un corps pour empêcher un sauvetage. Braquer dans des zones légales (farms, commerces, zones neutres).</div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">3️⃣ HRP, Interaction & Véhicules</div>
+        <div class="rule"><span class="rule-icon">🔇</span><div class="rule-text">Répondre <strong>HRP par HRP</strong> est interdit. En cas de litige, terminez la scène puis ouvrez un ticket staff.</div></div>
+        <div class="rule"><span class="rule-icon">💬</span><div class="rule-text">Le <strong>/me</strong> doit décrire des actions RP claires. Les /me inutiles ou troll sont interdits.<br><span class="sanction">⚠️ Abus du /me = ban permanent</span></div></div>
+        <div class="rule"><span class="rule-icon">🔊</span><div class="rule-text">Interdiction du <strong>double vocal</strong> (Discord ou autre) durant une session RP. Aucun vocabulaire HRP en scène (argent sale, tickets, reset…).</div></div>
+        <div class="rule"><span class="rule-icon">🚗</span><div class="rule-text"><strong>Véhicules :</strong> pas de sauts irréalistes, pas de plus de 2 pneus crevés (1 sur moto), pas de vol à basse altitude en ville, pas d'atterrissage en centre-ville.</div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">4️⃣ Wipe & Backsave</div>
+        <div class="rule"><span class="rule-icon">🔄</span><div class="rule-text">Lors d'un wipe : personnage envoyé en jail à vie. Ouvrir un ticket pour commencer une nouvelle vie RP. Interdit de recréer le même personnage ou reconnaître d'anciens contacts.</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text"><strong>Backsave interdit :</strong> déposer items/armes avant un wipe pour les récupérer ensuite est interdit.<br><span class="sanction">⚠️ Clear/suppression de l'entrepôt + wipe</span></div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">5️⃣ Contenu, Logique & Vols</div>
+        <div class="rule"><span class="rule-icon">🚫</span><div class="rule-text">Contenu à caractère religieux, sexuel, homophobe, discriminatoire ou haineux est interdit.</div></div>
+        <div class="rule"><span class="rule-icon">🧠</span><div class="rule-text"><strong>Raccourci RP :</strong> interdit d'utiliser des infos que votre personnage ne devrait pas connaître (voix sous masque, infos via Discord/stream).</div></div>
+        <div class="rule"><span class="rule-icon">👜</span><div class="rule-text"><strong>Vols dans coffres :</strong> autorisé mais à vos risques. La victime peut réagir violemment. La police peut être appelée.</div></div>
+      </div>
+    </div>
+
+    <!-- ════════════ LEXIQUE RP ════════════ -->
+    <div id="hrp-lexique" class="section">
+      <div class="page-header">
+        <div class="badge">Règlement HRP</div>
+        <h1>📚 Lexique RP</h1>
+        <p>Expressions à utiliser en jeu pour rester dans le cadre RP</p>
+      </div>
+      <div class="alert info">💡 <div>Utilisez ces expressions pour exprimer des problèmes techniques ou des actions HRP de manière immersive, sans casser le RP.</div></div>
+      <div class="lexique-grid">
+        <div class="lex-item"><div class="lex-rp">"J'ai mal à la tête"</div><div class="lex-hrp">→ Crash / bugs visuels</div></div>
+        <div class="lex-item"><div class="lex-rp">"Unité X" / "Je retourne à l'hôpital"</div><div class="lex-hrp">→ Téléportation à l'hôpital (bug technique)</div></div>
+        <div class="lex-item"><div class="lex-rp">"Il y a une tempête qui arrive"</div><div class="lex-hrp">→ Reboot / redémarrage du serveur</div></div>
+        <div class="lex-item"><div class="lex-rp">"J'ai mal aux yeux"</div><div class="lex-hrp">→ Problème d'affichage / chutes de FPS</div></div>
+        <div class="lex-item"><div class="lex-rp">"Je fais mes lacets" / "J'ai marché dans un chewing-gum"</div><div class="lex-hrp">→ Téléportation (désync / bug de déplacement)</div></div>
+        <div class="lex-item"><div class="lex-rp">"Je vais prendre une pastille"</div><div class="lex-hrp">→ Problème de micro / communication vocale</div></div>
+        <div class="lex-item"><div class="lex-rp">"J'ai mis la GoPro / BodyCam / DashCam"</div><div class="lex-hrp">→ En live ou en train d'enregistrer</div></div>
+        <div class="lex-item"><div class="lex-rp">"Je vais faire une sieste"</div><div class="lex-hrp">→ Déconnexion / reconnexion</div></div>
+        <div class="lex-item"><div class="lex-rp">"Je contacte le gouvernement" / "J'appelle un papillon"</div><div class="lex-hrp">→ Demande d'intervention STAFF <em>(dernier recours)</em></div></div>
+        <div class="lex-item"><div class="lex-rp">"J'ai une absence"</div><div class="lex-hrp">→ Latence / freeze temporaire</div></div>
+        <div class="lex-item"><div class="lex-rp">"Ma radio grésille"</div><div class="lex-hrp">→ Lag vocal / micro qui coupe</div></div>
+        <div class="lex-item"><div class="lex-rp">"J'appelle un mécano invisible"</div><div class="lex-hrp">→ Action qui ne se déclenche pas / PNJ hors service</div></div>
+        <div class="lex-item"><div class="lex-rp">"Je suis en service réduit"</div><div class="lex-hrp">→ Problème de connexion / FPS bas</div></div>
+        <div class="lex-item"><div class="lex-rp">"Je suis bloqué dans ma tête"</div><div class="lex-hrp">→ Bug d'interface / menu bloqué / clavier figé</div></div>
+        <div class="lex-item"><div class="lex-rp">"Mon GPS est déréglé"</div><div class="lex-hrp">→ Problème de map / GPS buggé</div></div>
+        <div class="lex-item"><div class="lex-rp">"Je suis dans un mauvais fauteuil"</div><div class="lex-hrp">→ Bug de position dans un véhicule / objet</div></div>
+        <div class="lex-item"><div class="lex-rp">"Mon téléphone bug"</div><div class="lex-hrp">→ Problème d'interface téléphone</div></div>
+        <div class="lex-item"><div class="lex-rp">"Je suis en pleine confusion"</div><div class="lex-hrp">→ Comportement étrange involontaire / personnage buggé</div></div>
+        <div class="lex-item"><div class="lex-rp">"Je fais un reset mental"</div><div class="lex-hrp">→ Déconnexion volontaire pour résoudre un souci</div></div>
+        <div class="lex-item"><div class="lex-rp">"Je suis tombé dans une faille spatio-temporelle"</div><div class="lex-hrp">→ Tombé sous la map / coincé dans une collision</div></div>
+      </div>
+    </div>
+
+    <!-- ════════════ NOTIONS DE BASE ════════════ -->
+    <div id="hrp-notions" class="section">
+      <div class="page-header">
+        <div class="badge">Règlement HRP</div>
+        <h1>🪬 Notions de base RP</h1>
+        <p>Définitions essentielles des termes RP à connaître</p>
+      </div>
+      <div class="notion-grid">
+        <div class="notion-item"><div class="notion-title">🔹 Metagaming</div><div class="notion-def">Utiliser des informations obtenues hors RP pour agir en jeu.</div><div class="notion-example">Ex : reconnaître un policier en civil via sa voix sur Discord.</div></div>
+        <div class="notion-item"><div class="notion-title">🔹 Powergaming</div><div class="notion-def">Forcer des actions irréalistes sans laisser de choix aux autres joueurs.</div><div class="notion-example">Ex : plaquer quelqu'un au sol sans lui laisser le temps de réagir.</div></div>
+        <div class="notion-item"><div class="notion-title">🔹 Cohérence RP</div><div class="notion-def">Jouer son personnage de manière logique et réaliste selon son histoire.</div><div class="notion-example">Ex : un civil lambda ne mitraille pas un gang armé tout seul.</div></div>
+        <div class="notion-item"><div class="notion-title">🔹 Mass RP</div><div class="notion-def">Créer une scène impliquant une foule énorme sans logique RP.</div><div class="notion-example">Ex : provoquer un attroupement massif pour troller.</div></div>
+        <div class="notion-item"><div class="notion-title">🔹 Freekill / Free Punch</div><div class="notion-def">Tuer ou frapper un joueur sans raison RP valable.</div><div class="notion-example">Ex : tabasser un inconnu en pleine rue sans contexte.</div></div>
+        <div class="notion-item"><div class="notion-title">🔹 Carkill</div><div class="notion-def">Utiliser un véhicule comme arme de manière irréaliste.</div><div class="notion-example">Ex : foncer volontairement sur un joueur pour le tuer.</div></div>
+        <div class="notion-item"><div class="notion-title">🔹 Copbait</div><div class="notion-def">Provoquer la police volontairement sans raison RP.</div><div class="notion-example">Ex : rouler exprès devant eux pour se faire poursuivre.</div></div>
+        <div class="notion-item"><div class="notion-title">🔹 Gangbait</div><div class="notion-def">Provoquer un gang sans raison RP.</div><div class="notion-example">Ex : insulter un gang juste pour lancer une fusillade.</div></div>
+        <div class="notion-item"><div class="notion-title">🔹 Fear RP</div><div class="notion-def">Jouer la peur de son personnage face au danger.</div><div class="notion-example">Ex : si on te braque avec une arme, tu dois avoir peur et obéir.</div></div>
+        <div class="notion-item"><div class="notion-title">🔹 Pain RP</div><div class="notion-def">Jouer la douleur de son personnage quand il est blessé.</div><div class="notion-example">Ex : après une balle dans la jambe, marcher difficilement.</div></div>
+        <div class="notion-item"><div class="notion-title">🔹 Refus de scène</div><div class="notion-def">Quitter ou interrompre une scène RP volontairement.</div><div class="notion-example">Ex : déco en plein braquage pour éviter les conséquences.</div></div>
+        <div class="notion-item"><div class="notion-title">🔹 Chicken Run / Spam emote</div><div class="notion-def">Abuser des mécaniques pour éviter un danger.</div><div class="notion-example">Ex : courir en zigzag ou spammer une emote pour esquiver des balles.</div></div>
+        <div class="notion-item"><div class="notion-title">🔹 Revenge Kill</div><div class="notion-def">Revenir tuer la personne qui vous a tué après votre mort RP.</div><div class="notion-example">Ex : chercher votre assassin alors que votre perso a perdu la mémoire.</div></div>
+        <div class="notion-item"><div class="notion-title">🔹 Imaginaire RP</div><div class="notion-def">Inventer des faits ou objets inexistants en RP.</div><div class="notion-example">Ex : dire "j'ai une arme invisible" alors que tu n'en as pas.</div></div>
+        <div class="notion-item"><div class="notion-title">🔹 Hide Bush</div><div class="notion-def">Abuser des textures pour être invisible dans un buisson.</div><div class="notion-example">Ex : se planquer dans la végétation où votre skin n'est plus visible.</div></div>
+        <div class="notion-item"><div class="notion-title">🔹 Off-road</div><div class="notion-def">Utiliser un véhicule inadapté en tout-terrain.</div><div class="notion-example">Ex : rouler dans les montagnes avec une supercar.</div></div>
+        <div class="notion-item"><div class="notion-title">🔹 Bunny Hop</div><div class="notion-def">Sauter en continu pour se déplacer plus vite et éviter les tirs.</div><div class="notion-example"></div></div>
+        <div class="notion-item"><div class="notion-title">🔹 HRP Vocal</div><div class="notion-def">Parler directement HRP dans le vocal en pleine scène RP.</div><div class="notion-example">Ex : dire "je lag" en plein braquage.</div></div>
+        <div class="notion-item"><div class="notion-title">🔹 Insinuation HRP</div><div class="notion-def">Glisser des phrases HRP en RP.</div><div class="notion-example">Ex : "Tu sais que t'as pas le droit, c'est contre les règles."</div></div>
+        <div class="notion-item"><div class="notion-title">🔹 Raccourci RP</div><div class="notion-def">Utiliser des infos que ton personnage ne devrait pas avoir.</div><div class="notion-example">Ex : reconnaître un gang uniquement à ses vêtements, sans présentation RP.</div></div>
+      </div>
+    </div>
+
+    <!-- ════════════ TICKET ════════════ -->
+    <div id="hrp-ticket" class="section">
+      <div class="page-header">
+        <div class="badge">Règlement HRP</div>
+        <h1>🎟️ Règlement Ticket</h1>
+        <p>Règles à respecter lors de l'ouverture d'un ticket staff</p>
+      </div>
+      <div class="card">
+        <div class="card-title">✅ À faire</div>
+        <div class="rule"><span class="rule-icon">✅</span><div class="rule-text">Utilisez un <strong>langage poli et respectueux</strong>. Les formules de politesse sont obligatoires.</div></div>
+        <div class="rule"><span class="rule-icon">✅</span><div class="rule-text">Soyez <strong>clairs et précis</strong> dans vos demandes.</div></div>
+        <div class="rule"><span class="rule-icon">✅</span><div class="rule-text">Attendez avec patience. <strong>Un ticket sans réponse de votre part pendant 24h sera automatiquement fermé.</strong></div></div>
+        <div class="rule"><span class="rule-icon">🎥</span><div class="rule-text">En cas de preuve vidéo, fournissez <strong>l'intégralité de la scène avec l'audio complet des deux parties</strong>. Une vidéo coupée ou sans son ne sera pas recevable.</div></div>
+      </div>
+      <div class="card">
+        <div class="card-title">❌ Interdictions</div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Aucune insulte ou propos déplacé.<br><span class="sanction">⚠️ Fermeture immédiate + ban Discord/IG</span></div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text"><strong>Pas de spam</strong> de tickets.<br><span class="sanction">⚠️ Ban Discord</span></div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">N'ouvrez pas de ticket sans motif sérieux.</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Vous ne pouvez <strong>pas choisir le membre du staff</strong> qui traitera votre demande.</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Si vous ouvrez un ticket dans la <strong>mauvaise catégorie</strong>, il sera automatiquement fermé.</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Les insultes en messages privés sur d'autres plateformes ne seront pas prises en compte.</div></div>
+      </div>
+      <div class="alert danger">🚨 <div>Le non-respect de ces consignes pourra entraîner des <strong>sanctions immédiates</strong>.</div></div>
+    </div>
+
+    <!-- ════════════ STREAMEUR ════════════ -->
+    <div id="hrp-stream" class="section">
+      <div class="page-header">
+        <div class="badge">Règlement HRP</div>
+        <h1>📽️ Règlement Streameur</h1>
+        <p>Règles sur le streamhack — à respecter strictement</p>
+      </div>
+      <div class="card">
+        <div class="card-title">⛔ Formellement interdits lors de vos streams</div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text"><strong>Le trashtalk :</strong> tout propos insultant, moqueur ou dénigrant envers un joueur, un staff ou le serveur.</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text"><strong>L'utilisation des informations de votre chat</strong> dans le cadre du RP (métagaming).</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text"><strong>La diffusion des réunions communautaires</strong> (Interadmin, Besoin d'aide, réunions internes).</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text"><strong>La mention du nom d'un joueur ou d'un streamer</strong> sans son autorisation préalable.</div></div>
+      </div>
+      <div class="alert danger">⚠️ <div>Tout non-respect peut entraîner des sanctions lourdes, pouvant aller jusqu'à un <strong>ban définitif</strong> du serveur.</div></div>
+    </div>
+
+    <!-- ════════════ DISCORD ════════════ -->
+    <div id="hrp-discord" class="section">
+      <div class="page-header">
+        <div class="badge">Règlement HRP</div>
+        <h1>🗣️ Règlement Discord</h1>
+        <p>Règles des serveurs Discord LSCITY</p>
+      </div>
+      <div class="card">
+        <div class="card-title">✅ À respecter absolument</div>
+        <div class="rule"><span class="rule-icon">🎭</span><div class="rule-text">Votre <strong>pseudo Discord doit être respectueux et cohérent</strong> avec votre personnage RP. Tout pseudo offensant ou non-RP est sanctionnable.</div></div>
+        <div class="rule"><span class="rule-icon">💬</span><div class="rule-text">Le salon <strong>#discussion-hrp</strong> est prévu pour l'entraide entre membres. Pas de spam, restez courtois.</div></div>
+        <div class="rule"><span class="rule-icon">📸</span><div class="rule-text">Postez vos photos dans les <strong>bons salons</strong> selon qu'il s'agisse de contenu HRP ou RP.</div></div>
+        <div class="rule"><span class="rule-icon">🚫</span><div class="rule-text">Toute publicité pour un autre serveur est <strong>formellement interdite</strong>.<br><span class="sanction">⚠️ Bannissement définitif</span></div></div>
+        <div class="rule"><span class="rule-icon">🤝</span><div class="rule-text">Seuls les serveurs Discord <strong>officiellement liés à LS CITY</strong> peuvent être partagés.</div></div>
+      </div>
+      <div class="card">
+        <div class="card-title">❗ Tickets et gestion des problèmes</div>
+        <div class="rule"><span class="rule-icon">🛠️</span><div class="rule-text">Pour toute question, <strong>ouvrez un ticket dans la bonne catégorie</strong>.</div></div>
+        <div class="rule"><span class="rule-icon">🗣️</span><div class="rule-text">Utilisez toujours un <strong>langage poli et respectueux</strong> avec le staff.</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Les insultes envers les membres ou le staff.<br><span class="sanction">⚠️ Ban temporaire ou définitif</span></div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Le trashtalk est strictement interdit.</div></div>
+        <div class="rule"><span class="rule-icon">🔔</span><div class="rule-text">Les <strong>pings (mentionner) admin/modo/helper sont interdits</strong>. Signalez le problème dans votre ticket.</div></div>
+        <div class="rule"><span class="rule-icon">⏳</span><div class="rule-text">Patientez calmement une fois votre ticket ouvert. Le staff répond dès que possible.</div></div>
+      </div>
+      <div class="alert danger">❗ <div>Insulter, menacer ou faire pression dans un ticket n'accélérera pas le traitement. Cela pourrait rallonger le délai et entraîner un <strong>ban définitif</strong>.</div></div>
+    </div>
+
+    <!-- ════════════ RP ANIMALIER ════════════ -->
+    <div id="global-animal" class="section">
+      <div class="page-header">
+        <div class="badge">Règlement Global</div>
+        <h1>🐶 RP Animalier</h1>
+        <p>Uniquement pour les joueurs ayant acquis un PED animal via la boutique F1</p>
+      </div>
+      <div class="alert warn">⚠️ <div>Tout manquement au règlement entraînera le <strong>retrait de votre PED animalier</strong>.</div></div>
+      <div class="card">
+        <div class="card-title">✅ Autorisé</div>
+        <div class="rule"><span class="rule-icon">✅</span><div class="rule-text">Vous transformer à n'importe quel moment <strong>en vous cachant et non devant tout le monde</strong>.</div></div>
+        <div class="rule"><span class="rule-icon">✅</span><div class="rule-text">Attaquer uniquement les personnes <strong>agressives</strong>.</div></div>
+        <div class="rule"><span class="rule-icon">✅</span><div class="rule-text">Monter dans les véhicules en <strong>passager uniquement</strong>.</div></div>
+      </div>
+      <div class="card">
+        <div class="card-title">❌ Interdit</div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Se transformer <strong>devant des gens directement</strong> — vous devez vous cacher avant.</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Attaquer <strong>sans raison valable</strong>.</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text"><strong>Parler</strong> en étant en PED Animalier — RP muet uniquement, via les émotes animaux (F2).</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text"><strong>Conduire</strong> un véhicule quel qu'il soit.</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text"><strong>Tirer</strong> avec une arme en PED Animalier.</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Utiliser les infos obtenues en ped animal <strong>pendant votre RP normal</strong>.</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Se transformer en PED Animalier pendant une scène pour y revenir ou utiliser les informations prises.</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Tout <strong>troll</strong>.</div></div>
+      </div>
+    </div>
+
+    <!-- ════════════ SERVICES PUBLIQUES ════════════ -->
+    <div id="global-services" class="section">
+      <div class="page-header">
+        <div class="badge">Règlement Global</div>
+        <h1>👮 Services Publiques</h1>
+        <p>Relations avec l'EMS, la Police et le Gouvernement</p>
+      </div>
+      <div class="card">
+        <div class="card-title">🚑 Relations avec les EMS</div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Tirer sur un EMS ou le kidnapper lorsqu'il est en service est <strong>strictement interdit</strong>. <em>(Exception : en fin de scène gunfight, vous pouvez braquer un EMS uniquement pour lui indiquer de partir.)</em></div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Bloquer les EMS ou entraver leurs interventions de réanimation en fin de scène.</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Les EMS ne doivent entretenir aucun lien privilégié avec des joueurs illégaux.</div></div>
+        <div class="rule"><span class="rule-icon">⏱️</span><div class="rule-text"><strong>ATA obligatoire</strong> après une mort RP. Minimum 10 minutes après un gunfight ou mort par arme. Ne peut pas être contesté ou exigé supprimé.</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Déplacer un corps pour <strong>empêcher l'intervention des EMS</strong> est strictement interdit.</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text"><strong>Spam d'appels</strong> aux EMS.<br><span class="sanction">⚠️ Ban permanent</span></div></div>
+      </div>
+      <div class="card">
+        <div class="card-title">🚔 Relations avec la Police</div>
+        <div class="rule"><span class="rule-icon">⚠️</span><div class="rule-text">Le <strong>fear RP</strong> envers les forces de l'ordre doit être maintenu en toutes circonstances.</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Faire du <strong>copbait</strong>, perturber les courses-poursuites, détruire ses biens ou retourner dans son quartier en pleine poursuite.</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text"><strong>Saboter les véhicules de police</strong> (crever les pneus) est strictement interdit.</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Se jeter à l'eau pour tenter d'échapper à une scène policière.</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Prendre des otages pour négocier la libération d'une personne arrêtée.</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Spam d'appels téléphoniques.<br><span class="sanction">⚠️ Ban permanent</span></div></div>
+      </div>
+      <div class="card">
+        <div class="card-title">🚨 Prise d'otage de Policiers</div>
+        <div class="alert warn">⚠️ <div>Braquer un policier en service est <strong>interdit</strong> sauf cas spécifiques : sécurisation de leads importants, attaques de convois de fonds.</div></div>
+        <div class="rule"><span class="rule-icon">⚠️</span><div class="rule-text">La prise d'otage de policiers peut déclencher un <strong>DEFCON</strong>, des perquisitions, fortes amendes ou mise en fédérale (WIPE).</div></div>
+        <div class="rule"><span class="rule-icon">✅</span><div class="rule-text">Cas exceptionnels : "no fear" manifeste d'une patrouille, seule échappatoire possible, cas d'extrême urgence.</div></div>
+        <div class="rule"><span class="rule-icon">📋</span><div class="rule-text">Événements scénarisés : toute prise d'otage planifiée doit être <strong>annoncée à l'avance aux référents de la police</strong>.</div></div>
+      </div>
+      <div class="card">
+        <div class="card-title">💥 Gouvernement & Entreprises</div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Braquer un membre du gouvernement est <strong>strictement interdit</strong>. Toute attaque nécessite une approbation préalable du staff.</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Braquer sur les lieux des entreprises (zones de sécurité), braquer un LTD occupé par un employé, prendre en otage des employés en service.</div></div>
+        <div class="rule"><span class="rule-icon">ℹ️</span><div class="rule-text">Les LTD Gang (Ballas/Families/Shambless Street) peuvent être braqués <strong>sous validation Staff Illégal</strong>.</div></div>
+      </div>
+    </div>
+
+    <!-- ════════════ ZONE SAFE ════════════ -->
+    <div id="global-zonesafe" class="section">
+      <div class="page-header">
+        <div class="badge">Règlement Global</div>
+        <h1>🦺 Zone Safe</h1>
+        <p>Lieux où toute activité illégale ou comportement hostile est interdit</p>
+      </div>
+      <div class="card">
+        <div class="card-title">❌ Activités interdites en zone safe</div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Kidnapper un joueur</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Commettre un braquage</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Se battre, même pour des raisons "ludiques"</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Toute autre action illégale</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text"><strong>Camping volontaire :</strong> se réfugier délibérément dans une zone safe pour fuir une poursuite est interdit.</div></div>
+      </div>
+      <div class="card">
+        <div class="card-title">📍 Liste des zones safes</div>
+        <div class="rule"><span class="rule-icon">🚔</span><div class="rule-text">Commissariat</div></div>
+        <div class="rule"><span class="rule-icon">🏛️</span><div class="rule-text">Gouvernement</div></div>
+        <div class="rule"><span class="rule-icon">🏥</span><div class="rule-text">Hôpital</div></div>
+        <div class="rule"><span class="rule-icon">🅿️</span><div class="rule-text">Parking central</div></div>
+        <div class="rule"><span class="rule-icon">🚗</span><div class="rule-text">Fourrières</div></div>
+        <div class="rule"><span class="rule-icon">🏪</span><div class="rule-text">Entreprises</div></div>
+        <div class="rule"><span class="rule-icon">🔵</span><div class="rule-text">Toutes les zones safes prévues par le script du serveur</div></div>
+      </div>
+    </div>
+
+    <!-- ════════════ LSPD/BCSO ════════════ -->
+    <div id="legal-lspd" class="section">
+      <div class="page-header">
+        <div class="badge">Règlement RP Légal</div>
+        <h1>🚔 Règlement LSPD / BCSO</h1>
+        <p>Tenues obligatoires en service. Signe distinctif obligatoire en civil (insigne, blason).</p>
+      </div>
+      <div class="card">
+        <div class="card-title">❌ Règles d'interdiction</div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Revenir au poste de police (PDP) en pleine scène.</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Contrôler une personne sans être en service.</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Utiliser les armes de service en dehors des heures de service.</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text"><strong>Vente d'arme LSPD/BCSO.</strong><br><span class="sanction">⚠️ Ban permanent</span></div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Confisquer un citoyen au sol.</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Laisser un individu plus d'une heure en cellule (sauf contexte RP justifié).</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Passer d'un RP illégal à un RP LSPD/BCSO <strong>sans passer par un wipe</strong>. L'inverse est autorisé.</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Incarner un <strong>ripou (policier corrompu)</strong> sans autorisation du staff via ticket.</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Garder les armes saisies pour usage personnel.</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Armes illégales formellement interdites pour les agents.</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Plus de <strong>deux véhicules SRU</strong> en même temps sur la carte.</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Faire la distinction argent propre/sale sans <strong>vérification roleplay</strong> (stylo détecteur, appel banque, etc.).</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Utiliser un défibrillateur pour avantager une scène. Après réanimation : attendre 10 min avant de ressortir son arme (taser autorisé).</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Fouiller une personne sans motif valide selon le niveau DEFCON. Un simple délit de fuite ne justifie qu'une palpation de sécurité.</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Braquer ou prendre en otage <strong>seul</strong> en étant en service LSPD/BCSO.</div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">👮 Règles spécifiques aux Cadets</div>
+        <div class="rule"><span class="rule-icon">⚠️</span><div class="rule-text">Respecter le <strong>fear RP</strong> en infériorité ou en situation illégale.</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Les cadets <strong>ne peuvent pas avoir de casier judiciaire</strong>.</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Les cadets <strong>ne peuvent pas partir en patrouille seuls</strong>.</div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">✅ Règles d'intervention</div>
+        <div class="rule"><span class="rule-icon">✅</span><div class="rule-text">Crever les pneus d'un véhicule en poursuite <strong>si les occupants ont ouvert le feu</strong>.</div></div>
+        <div class="rule"><span class="rule-icon">✅</span><div class="rule-text">Si la conduite devient dangereuse (collisions civils, imprudence grave), les forces de l'ordre peuvent viser les pneus.</div></div>
+        <div class="rule"><span class="rule-icon">✅</span><div class="rule-text">Le <strong>PIT</strong> est autorisé sous conditions (voir règles PIT ci-dessous).</div></div>
+        <div class="rule"><span class="rule-icon">✅</span><div class="rule-text">Après <strong>2 tentatives de PIT</strong> échouées, tirs sur les pneus autorisés.</div></div>
+        <div class="rule"><span class="rule-icon">✅</span><div class="rule-text"><strong>3 descentes par semaine</strong> (par service) sans dossier sur points de drogue. Un seul point ciblé par descente.</div></div>
+        <div class="rule"><span class="rule-icon">✅</span><div class="rule-text">En cas de fusillade déclenchée sur un point de drogue, la LSPD peut intervenir avec effectif renforcé (hors quota).</div></div>
+        <div class="rule"><span class="rule-icon">✅</span><div class="rule-text"><strong>Un seul sniper</strong> autorisé par scène. Deux si scène conjointe LSPD+BCSO.</div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🔫 Règles PIT</div>
+        <div class="alert info">ℹ️ <div>Le véhicule doit être équipé d'un <strong>pare-buffle</strong>. Le PIT dépend uniquement du comportement du conducteur poursuivi.</div></div>
+        <div class="rule"><span class="rule-icon">✅</span><div class="rule-text">PIT autorisé si conduite dangereuse (collisions volontaires, no pain évident) après <strong>au moins 5 minutes</strong> de poursuite.</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Interdit de dépasser un véhicule civil, de gang, une moto ou un vélo. Conserver une distance de sécurité.</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Aucun PIT si le conducteur conduit de manière cohérente et respecte le pain RP.</div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🔍 Contrôle & Confiscation des armes (PPA)</div>
+        <table>
+          <tr><th>Situation</th><th>Résultat</th></tr>
+          <tr><td>Avec sac + sans PPA</td><td>Confiscation armes lourdes ET légères</td></tr>
+          <tr><td>Avec sac + avec PPA</td><td>Impossible de confisquer</td></tr>
+          <tr><td>Sans sac + sans PPA</td><td>Confiscation armes légères uniquement</td></tr>
+          <tr><td>Sans sac + avec PPA</td><td>Impossible de confisquer</td></tr>
+          <tr><td>Citoyen ouvre le feu (avec ou sans sac)</td><td>Confiscation autorisée (PPA non applicable)</td></tr>
+        </table>
+        <div class="alert warn">⚠️ <div>Le <strong>PPA est un Permis de Port d'Arme</strong>, pas un permis de tir.</div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🕵️ Règles concernant les Indics</div>
+        <div class="rule"><span class="rule-icon">🔐</span><div class="rule-text">Les indics doivent se rapprocher des <strong>hauts gradés uniquement</strong> pour transmettre leurs informations.</div></div>
+        <div class="rule"><span class="rule-icon">⚠️</span><div class="rule-text">Un joueur incarnant un indic s'expose à une <strong>mort RP</strong>. Protégez votre identité.</div></div>
+        <div class="rule"><span class="rule-icon">🔒</span><div class="rule-text"><strong>Seul l'état-major</strong> est autorisé à connaître l'identité réelle (nom/carte d'identité) des indics.</div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">📋 Motifs de fouilles valides</div>
+        <div class="rule"><span class="rule-icon">🔍</span><div class="rule-text">Le suspect monte dans un véhicule de police</div></div>
+        <div class="rule"><span class="rule-icon">🔍</span><div class="rule-text">Le suspect dissimule son visage (masque)</div></div>
+        <div class="rule"><span class="rule-icon">🔍</span><div class="rule-text">Le suspect porte un holster plein (étui d'arme)</div></div>
+        <div class="rule"><span class="rule-icon">🔍</span><div class="rule-text">Le suspect porte un gilet par balle</div></div>
+        <div class="rule"><span class="rule-icon">🔍</span><div class="rule-text">Le suspect est menaçant</div></div>
+        <div class="rule"><span class="rule-icon">🔍</span><div class="rule-text">En cas de DEFCON actif</div></div>
+      </div>
+    </div>
+
+    <!-- ════════════ DEFCON ════════════ -->
+    <div id="legal-defcon" class="section">
+      <div class="page-header">
+        <div class="badge">Règlement RP Légal</div>
+        <h1>🚨 DEFCON</h1>
+        <p>Niveaux d'alerte des forces de l'ordre</p>
+      </div>
+      <div class="defcon-grid">
+        <div class="defcon-item">
+          <div class="defcon-header" onclick="toggleDefcon(this)">
+            <div class="defcon-level d5">5</div>
+            <div class="defcon-info">
+              <h3>DEFCON 5 — Paix</h3>
+              <p>Préparation normale en temps de paix</p>
+            </div>
+            <span class="tag blue" style="margin-left:auto">Normal</span>
+          </div>
+          <div class="defcon-body">
+            <strong>Forces de l'ordre :</strong>
+            <ul><li>Patrouilles normales</li><li>Équipement selon consignes hiérarchie</li><li>Véhicules basiques</li></ul>
+            <br><strong>Gouvernement :</strong>
+            <ul><li>Fonctionnement normal, surveillance normale, protection normale</li></ul>
+          </div>
+        </div>
+        <div class="defcon-item">
+          <div class="defcon-header" onclick="toggleDefcon(this)">
+            <div class="defcon-level d4">4</div>
+            <div class="defcon-info">
+              <h3>DEFCON 4 — Consignes de sécurité</h3>
+              <p>Préparation normale + consignes renforcées</p>
+            </div>
+            <span class="tag green" style="margin-left:auto">Faible</span>
+          </div>
+          <div class="defcon-body">
+            <strong>Forces de l'ordre :</strong>
+            <ul><li>Patrouilles normales (pas seul en véhicule)</li><li>Véhicules basiques / aériens si besoin</li><li>Droit de faire les pneus au bout de 5min de poursuite</li></ul>
+            <br><strong>Gouvernement :</strong>
+            <ul><li>Fonctionnement normal, surveillance supérieure (I.A.A.), protection normale</li></ul>
+          </div>
+        </div>
+        <div class="defcon-item">
+          <div class="defcon-header" onclick="toggleDefcon(this)">
+            <div class="defcon-level d3">3</div>
+            <div class="defcon-info">
+              <h3>DEFCON 3 — Alerte modérée</h3>
+              <p>Accroissement au-dessus de la normale</p>
+            </div>
+            <span class="tag yellow" style="margin-left:auto">Modéré</span>
+          </div>
+          <div class="defcon-body">
+            <strong>Forces de l'ordre :</strong>
+            <ul><li>Patrouilles intensives (pas seul)</li><li>Équipement renforcé (gilet par balle possible)</li><li>Fouille possible : personnes / véhicules (en cas de suspicion)</li><li>Véhicules basiques / aériens si besoin</li><li>Droit de faire les pneus au bout de 5min de poursuite</li><li>Tir létal après 3 sommations orales en cas de danger</li></ul>
+            <br><strong>Gouvernement :</strong>
+            <ul><li>Fonctionnement normal, surveillance supérieure, protection en alerte normale avec agent de sécurité en déplacement</li></ul>
+          </div>
+        </div>
+        <div class="defcon-item">
+          <div class="defcon-header" onclick="toggleDefcon(this)">
+            <div class="defcon-level d2">2</div>
+            <div class="defcon-info">
+              <h3>DEFCON 2 — Alerte haute</h3>
+              <p>Accroissement supplémentaire des forces</p>
+            </div>
+            <span class="tag" style="color:#ff8800;background:rgba(255,136,0,0.1);border:1px solid rgba(255,136,0,0.2);margin-left:auto">Haute</span>
+          </div>
+          <div class="defcon-body">
+            <strong>Forces de l'ordre :</strong>
+            <ul><li>Mise en place de barrages possible (contrôle des papiers, permis, etc.)</li><li>Équipement de combat (max 1 sniper par scène)</li><li>Véhicules basiques / aériens / blindés</li><li>À disposition totale du gouvernement</li><li>Toutes les unités obéissent aux commandants de la LSPD uniquement</li><li>Aucun mandat obligatoire pour opération importante</li><li>Droit de faire les pneus au bout de 5min</li><li>Tir létal après 3 sommations orales</li><li>Possibilité de restreindre la circulation</li></ul>
+            <br><strong>Gouvernement :</strong>
+            <ul><li>Protection en état d'alerte modéré, armé d'armes lourdes</li><li>Gouvernement sous radio constamment</li></ul>
+          </div>
+        </div>
+        <div class="defcon-item">
+          <div class="defcon-header" onclick="toggleDefcon(this)">
+            <div class="defcon-level d1">1</div>
+            <div class="defcon-info">
+              <h3>DEFCON 1 — Extrême urgence</h3>
+              <p>Préparation maximale — zone désignée — 48h max</p>
+            </div>
+            <span class="tag red" style="margin-left:auto">Critique</span>
+          </div>
+          <div class="defcon-body">
+            <strong>Forces de l'ordre (deviennent "Armée") :</strong>
+            <ul><li>Les forces de l'ordre opèrent sous la dénomination <strong>"Armée"</strong></li><li>Plus de pouvoir d'agir en ville — remplacées par l'armée</li><li>Armée déployée sur tout le territoire désigné</li><li>Protection prioritaire du gouvernement</li><li>Mise en place de barrages aux frontières</li><li>Véhicules de l'armée uniquement</li><li><strong>Pas d'arrestation — tir immédiat</strong></li><li>Tous les droits des citoyens suspendus (dans la limite du raisonnable)</li></ul>
+            <br><strong>Gouvernement :</strong>
+            <ul><li>Système de défense actif</li><li>Gouvernement sur radio d'urgence</li></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════════ HIÉRARCHIE ════════════ -->
+    <div id="legal-hierachie" class="section">
+      <div class="page-header">
+        <div class="badge">Règlement RP Légal</div>
+        <h1>⭐ Hiérarchie LSPD</h1>
+        <p>Rôles et responsabilités de chaque grade</p>
+      </div>
+      <div class="alert info">ℹ️ <div>Niveaux d'intervention : <strong>N1</strong> Prise d'info / <strong>N2</strong> Perquisition / <strong>N3</strong> Arrestation / <strong>N4</strong> DISSOLUTION. Si les gangs voient la LSPD se préparer pour une descente, ils sont obligés de déserter le quartier.</div></div>
+      <div class="hierarchy">
+        <div class="rank-item"><div class="rank-badge">Commandants</div><div class="rank-desc"><ul><li>Gèrent les liens avec le gouvernement et les hauts gradés</li><li>Prennent les directives pour l'organisation de la LSPD</li><li>Organisent et animent les réunions (hebdo + Major)</li><li>Décident de la création/fermeture des services</li><li>Peuvent proposer un vote à l'état major</li></ul></div></div>
+        <div class="rank-item"><div class="rank-badge">Commandants Adjoints</div><div class="rank-desc"><ul><li>Peuvent exclure des agents de la LSPD (délégation)</li><li>Peuvent décider d'un avertissement (délégation)</li><li>Animent les réunions en l'absence des commandants</li><li>Accueillent les agents en appel d'exclusion</li></ul></div></div>
+        <div class="rank-item"><div class="rank-badge">Secrétaire de Direction</div><div class="rank-desc"><ul><li>Coordonnent les démarches RH de la LSPD</li><li>Gèrent l'organisation de l'intranet et l'administration</li><li>Co-pilotent le recrutement des nouvelles recrues</li><li>Proposent des axes d'amélioration de l'institution</li><li>Gèrent les relations extérieures (partenariats, cérémonies, réunions externes)</li></ul></div></div>
+        <div class="rank-item"><div class="rank-badge">Capitaines</div><div class="rank-desc"><ul><li>Dirigent un service (NSA ou SWAT)</li><li>Peuvent mettre des avertissements (informant l'état major)</li><li>Peuvent décider une mise à pied conservatoire</li><li>Coordonnent des opérations de niveau 1 à 4</li></ul></div></div>
+        <div class="rank-item"><div class="rank-badge">Sous-Lieutenants</div><div class="rank-desc"><ul><li>Observent le fonctionnement de l'état major</li><li>Donnent des idées d'amélioration du département</li><li>Gèrent les négociations lors de prise d'otage d'agents de l'état</li><li>Managent les sergents</li></ul></div></div>
+        <div class="rank-item"><div class="rank-badge">Sergents</div><div class="rank-desc"><ul><li>Réalisent et tiennent à jour des dossiers judiciaires sur les gangs/orga</li><li>Forment leurs nouveaux collègues (tâche secondaire)</li><li>Conseillent techniquement les agents</li></ul></div></div>
+        <div class="rank-item"><div class="rank-badge">Senior Lead Officers</div><div class="rank-desc"><ul><li>Garants de la formation des cadets</li><li>Responsabilisent les officiers sur leurs missions</li><li>Prennent les décisions d'orientation d'intervention en l'absence de hauts gradés</li><li>Informent l'état major des comportements problématiques</li></ul></div></div>
+        <div class="rank-item"><div class="rank-badge">Officiers</div><div class="rank-desc"><ul><li>Responsables de leurs actes et ceux des cadets sur le terrain</li><li>Attentifs aux ordres reçus</li><li>Exercent leurs missions de protection dans le respect des règles</li><li>Patrouillent toujours à plusieurs</li><li>Peuvent intégrer des unités (SWAT ou NSA)</li></ul></div></div>
+        <div class="rank-item"><div class="rank-badge">Cadets</div><div class="rank-desc"><ul><li>Passent leur formation radio-d et initiales (Procédure, Tir, Call Radio, Conduite)</li><li>Portent leur gilet jaune constamment (sauf ordre contraire d'un État Major)</li><li>Ne patrouillent qu'avec un officier ou plus</li><li>Ne peuvent utiliser d'armes autre que tazer/matraque (sauf ordre État Major)</li></ul></div></div>
+      </div>
+    </div>
+
+    <!-- ════════════ EMS ════════════ -->
+    <div id="legal-ems" class="section">
+      <div class="page-header">
+        <div class="badge">Règlement RP Légal</div>
+        <h1>🚑 Règlement EMS</h1>
+        <p>Règles des services médicaux d'urgence</p>
+      </div>
+      <div class="card">
+        <div class="card-title">❌ Ce qui est interdit</div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Utiliser le rôle d'EMS à des fins illégales (soigner/réanimer un personnage dans une scène illégale).</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Vendre, échanger ou distribuer des Médikits ou bandages à d'autres joueurs.</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Intervenir sur une scène illégale tant que des tirs sont échangés. Attendre <strong>2-3 minutes sans coups de feu</strong>, ou <strong>30 secondes de calme total</strong>.</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Modifier l'esthétique du véhicule EMS (couleur, accessoires…).</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Favoriser un groupe ou une organisation (ex : suivre un gang pour les soigner plus facilement).</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Porter un <strong>masque, couvre-visage ou gilet pare-balles</strong> en service EMS. Vous devez rester à visage découvert.</div></div>
+      </div>
+      <div class="card">
+        <div class="card-title">🏥 Règles spécifiques & ATA</div>
+        <div class="rule"><span class="rule-icon">✅</span><div class="rule-text">Un EMS peut soigner dans un quartier <strong>uniquement si une autorisation d'entrée lui a été donnée</strong>.</div></div>
+        <div class="rule"><span class="rule-icon">⚠️</span><div class="rule-text">Si un joueur refuse de présenter sa carte d'identité, l'hôpital doit faire appel à un agent LSPD/BCSO.</div></div>
+        <div class="rule"><span class="rule-icon">⏱️</span><div class="rule-text"><strong>ATA de 10 minutes obligatoire</strong> après toute mort par arme à feu. Ne peut pas être outrepassé ou négocié.</div></div>
+      </div>
+      <div class="card">
+        <div class="card-title">🧑‍⚕️ Règles de service</div>
+        <div class="rule"><span class="rule-icon">✅</span><div class="rule-text"><strong>Tenue réglementaire obligatoire</strong> en service EMS.</div></div>
+        <div class="rule"><span class="rule-icon">✅</span><div class="rule-text">Respecter le protocole d'intervention et s'impliquer pleinement dans le roleplay de la scène.</div></div>
+        <div class="rule"><span class="rule-icon">✅</span><div class="rule-text">En fin de service, déposer tous les Médikits et bandages dans le coffre de l'entreprise.</div></div>
+      </div>
+    </div>
+
+    <!-- ════════════ ENTREPRISE ════════════ -->
+    <div id="legal-entreprise" class="section">
+      <div class="page-header">
+        <div class="badge">Règlement RP Légal</div>
+        <h1>🏛️ Règlement Entreprise</h1>
+        <p>Règles pour les patrons, employés, mécanos et concessionnaires</p>
+      </div>
+      <div class="card">
+        <div class="card-title">🏢 Règlement Général</div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Interdit aux patrons d'utiliser le <strong>coffre de l'entreprise à des fins personnelles</strong>.</div></div>
+        <div class="rule"><span class="rule-icon">⚠️</span><div class="rule-text">Toute entreprise hors boutique sans activité patronale pendant <strong>2 semaines</strong> sera récupérée automatiquement.</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Interdit de <strong>vendre ou donner son entreprise</strong>. En cas de désengagement, ouvrez un ticket.</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Interdit de <strong>cumuler plusieurs emplois légaux</strong> en même temps.<br><span class="sanction">⚠️ Renvoi immédiat des deux postes</span></div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text"><strong>Vol dans le coffre de l'entreprise</strong> interdit.<br><span class="sanction">⚠️ Bannissement ou TIG + remboursement intégral</span></div></div>
+      </div>
+      <div class="card">
+        <div class="card-title">🔧 Règlement Mécano</div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Interdit d'équiper un véhicule d'une mitrailleuse ou de tout autre armement.</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Interdit de mettre un véhicule en fourrière sans <strong>autorisation du propriétaire</strong> (sauf véhicule abandonné).</div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Interdit de déverrouiller un véhicule dans la rue sans demande du <strong>propriétaire légitime</strong>.</div></div>
+      </div>
+      <div class="card">
+        <div class="card-title">🚗 Règlement Concessionnaire</div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Interdit d'attribuer gratuitement un véhicule. <strong>Toute acquisition doit être payée.</strong></div></div>
+        <div class="rule"><span class="rule-icon">❌</span><div class="rule-text">Interdit de vendre un véhicule à l'aveugle. L'acheteur doit connaître le contenu du coffre avant l'achat.</div></div>
+        <div class="rule"><span class="rule-icon">ℹ️</span><div class="rule-text">Si l'acheteur accepte en connaissance de cause, <strong>aucun remboursement</strong> ne sera accordé.</div></div>
+      </div>
+      <div class="card">
+        <div class="card-title">🚫 Véhicules interdits à la vente</div>
+        <div class="alert danger">🚨 <div>Toute vente de véhicule de fonction à une personne non habilitée sera sanctionnée d'un <strong>ban permanent</strong>.</div></div>
+        <div class="rule"><span class="rule-icon">🚫</span><div class="rule-text">Véhicules d'entreprise</div></div>
+        <div class="rule"><span class="rule-icon">🚫</span><div class="rule-text">Véhicules LSPD</div></div>
+        <div class="rule"><span class="rule-icon">🚫</span><div class="rule-text">Véhicules BCSO</div></div>
+        <div class="rule"><span class="rule-icon">🚫</span><div class="rule-text">Véhicules gouvernementaux</div></div>
+        <div class="rule"><span class="rule-icon">🚫</span><div class="rule-text">Véhicules hospitaliers</div></div>
+        <p style="font-size:12px;color:var(--text-dim);margin-top:8px">* Vente possible uniquement avec autorisation préalable d'un très haut gradé du staff.</p>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+  function show(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.currentTarget.classList.add('active');
+  }
+  function toggleDefcon(header) {
+    const body = header.nextElementSibling;
+    body.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
